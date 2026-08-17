@@ -235,6 +235,57 @@ nav.primary a:hover { color: var(--accent-hi); text-decoration: none; }
 .links .dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--accent); flex: none; }
 .links .go { margin-left: auto; color: var(--muted); font-size: 0.85rem; }
 
+/* ---- videos: click-to-play, so YouTube is never contacted until asked ----
+   What sits on the page is a picture and a button. Google gets no request and
+   sets no cookie for a visitor who does not watch, and the home page does not
+   pay ~1 MB of player code it may never need. site.js swaps in the real player
+   on click, from youtube-nocookie.com. A plain <iframe> here would have loaded
+   for everyone: this block is near the top, so loading="lazy" saves nothing. */
+.videos { display: grid; gap: 1.5rem; }
+.video { margin: 0; }
+.video-shot {
+  display: block; width: 100%; padding: 0; cursor: pointer;
+  position: relative; overflow: hidden;
+  background: var(--panel); border: 1px solid var(--panel-brd);
+  border-radius: var(--r-md); box-shadow: var(--sh-3);
+  transition: box-shadow .25s var(--ease), border-color .2s var(--ease);
+}
+.video-shot img { width: 100%; display: block; }
+.video-shot:hover, .video-shot:focus-visible { box-shadow: var(--sh-4); border-color: var(--accent-24); }
+/* the play badge */
+.video-play {
+  position: absolute; inset: 0; margin: auto;
+  width: 4.6rem; height: 4.6rem; border-radius: var(--r-pill);
+  background: var(--accent-16); border: 1px solid var(--accent-24);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s var(--ease), background .2s var(--ease);
+}
+.video-play::after {
+  content: ""; width: 0; height: 0;
+  border-left: 1.35rem solid var(--heading);
+  border-top: 0.86rem solid transparent;
+  border-bottom: 0.86rem solid transparent;
+  /* Nudged right because a triangle's visual mass sits left of its box:
+     geometrically centred, it reads as off-centre. */
+  margin-left: 0.34rem;
+}
+.video-shot:hover .video-play, .video-shot:focus-visible .video-play {
+  transform: scale(1.08); background: var(--accent-24);
+}
+/* the real player, once swapped in */
+.video-frame {
+  width: 100%; aspect-ratio: 16 / 9; display: block;
+  border: 1px solid var(--panel-brd); border-radius: var(--r-md);
+  box-shadow: var(--sh-3);
+}
+.video figcaption { margin-top: 0.7rem; color: var(--muted); font-size: 0.85rem;
+                    font-style: italic; text-align: center; }
+@media (prefers-reduced-motion: reduce) {
+  .video-shot, .video-play { transition: none; }
+  .video-shot:hover .video-play { transform: none; }
+}
+
 /* ---- lower row: subscribe + archives ---- */
 .lower { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
 .card { background: var(--panel); border: 1px solid var(--panel-brd); border-radius: var(--r-md);

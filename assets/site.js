@@ -67,3 +67,35 @@ document.addEventListener("DOMContentLoaded", () => {
   show(0);
   start();
 });
+
+/* ---------------------------------------------------------------------------
+   Click-to-play video.
+
+   Until someone clicks, the page holds a picture and a button and nothing
+   else -- YouTube is never contacted, so no request and no cookie for a
+   visitor who does not watch. On click the button is replaced by the real
+   player, from youtube-nocookie.com, already playing.
+
+   Adding a video needs no change here: this reads data-yt off each button.
+--------------------------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".video-shot").forEach((shot) => {
+    shot.addEventListener("click", () => {
+      const id = shot.dataset.yt;
+      if (!id) return;
+
+      const frame = document.createElement("iframe");
+      frame.className = "video-frame";
+      // autoplay: the click WAS the request to play, so starting muted-and-
+      // silent would be the wrong kind of polite.
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      frame.title = shot.getAttribute("aria-label") || "Video";
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+
+      shot.replaceWith(frame);
+      frame.focus();
+    });
+  });
+});
