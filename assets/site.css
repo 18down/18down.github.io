@@ -242,6 +242,59 @@ nav.primary a:hover { color: var(--accent-hi); text-decoration: none; }
 .links .dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--accent); flex: none; }
 .links .go { margin-left: auto; color: var(--muted); font-size: 0.85rem; }
 
+/* ---- the home page's six doors ----
+   Three across on a desktop, two on a tablet, one on a phone. Each tile is a
+   16:9 picture with its caption underneath; object-fit: cover means a
+   replacement picture of a slightly different shape still fills its tile
+   rather than letterboxing. The whole tile is the link, so the target is the
+   picture and not just the words. */
+.doors {
+  list-style: none; margin: 2.6rem 0 1rem; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
+}
+.doors a {
+  display: block; color: var(--text); text-decoration: none;
+  border-radius: var(--r-md); overflow: hidden;
+  background: var(--panel); border: 1px solid var(--panel-brd);
+  box-shadow: var(--sheen), var(--sh-2);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease),
+              border-color .2s var(--ease);
+}
+.doors img {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block;
+  /* A hairline around the picture itself, so a dark-cornered photo still has
+     an edge instead of bleeding into the tile. An `outline` pulled inward,
+     NOT a border: a border would push the picture 1px smaller and, with the
+     tile clipping its corners, would vanish on three sides. An inset
+     box-shadow is the other obvious answer and it does not work here --
+     browsers paint an image over its own inset shadow. */
+  outline: 1px solid rgba(255,255,255,0.14);
+  outline-offset: -1px;
+  transition: transform .45s var(--ease), outline-color .2s var(--ease);
+}
+.doors span {
+  display: block; padding: 0.85rem 1rem 0.95rem; text-align: center;
+  font-size: 0.92rem; letter-spacing: 0.01em; color: var(--muted);
+  transition: color .2s var(--ease);
+}
+.doors a:hover, .doors a:focus-visible {
+  transform: translateY(-4px); border-color: var(--accent-24);
+  box-shadow: var(--sheen), var(--sh-3);
+}
+/* the picture pushes in slightly under the pointer, inside its own frame */
+.doors a:hover img, .doors a:focus-visible img {
+  transform: scale(1.04); outline-color: rgba(255,255,255,0.26);
+}
+.doors a:hover span, .doors a:focus-visible span { color: var(--heading); }
+
+@media (max-width: 900px) { .doors { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .doors { grid-template-columns: 1fr; gap: 1.2rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .doors a, .doors img, .doors span { transition: none; }
+  .doors a:hover { transform: none; }
+  .doors a:hover img { transform: none; }
+}
+
 /* ---- videos: click-to-play, so YouTube is never contacted until asked ----
    What sits on the page is a picture and a button. Google gets no request and
    sets no cookie for a visitor who does not watch, and the home page does not

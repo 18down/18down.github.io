@@ -4,113 +4,71 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>18 Down</title>
-<meta name="description" content="The home of music by 18 Down. On all streaming platforms.">
+<meta name="description" content="18 Down — Charl Jordaan. On all streaming platforms. Listen on YouTube, Spotify, Apple Music and Amazon Music.">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-
-  <!-- HEADER + NAV  (identical on every page — copy this whole block when adding a page) -->
-  <!-- HEADER:START page="Home" animate -->
+  <!-- HEADER:START page="Home" animate nonav tagline="home" -->
   <header class="site">
     <h1 class="wordmark reveal-load d1"><a href="index.html">
       <img class="logo" src="assets/img/logo-18down.png" alt="18 Down" width="804" height="302">
     </a></h1>
-    <p class="tagline reveal-load d2">The home of music by 18 Down. On all streaming platforms —
-      please listen, like, follow and subscribe.</p>
-    <nav class="primary reveal-load d3" aria-label="Primary">
-      <a href="index.html" data-nav="Home" aria-current="page">Home</a>
-      <a href="pages/about.html" data-nav="About">About</a>
-      <a href="pages/images.html" data-nav="Images">Images</a>
-      <a href="pages/music.html" data-nav="Music">Music</a>
-      <a href="blog/index.html" data-nav="Journal">Journal</a>
-    </nav>
+    <p class="tagline reveal-load d2">On all streaming platforms — please listen, like, follow and subscribe.</p>
     <hr class="rule">
   </header>
   <!-- HEADER:END -->
 
   <main class="wrap">
 
-    <!-- HERO: photo on the left, cycling songs on the right -->
-    <section class="hero reveal-load d4" id="music">
-      <figure class="hero-photo">
-        <img src="assets/img/hero-home.jpg" alt="Charl Jordaan — 18 Down" width="857" height="643">
-      </figure>
+    <!-- THE SIX DOORS.
+         This is the whole home page: the logo, one line, and these. Each tile
+         is a picture, a link and a caption, and nothing else.
 
-      <div class="player" id="player">
-        <div class="player-eyebrow">Now cycling · his tracks
-          <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
-        <h2 class="player-title" id="player-title">Drown - Calm</h2>
-        <div class="player-frame" id="player-frame"><!-- Spotify player injected by site.js --></div>
-        <div class="player-controls">
-          <button class="player-btn" id="player-prev" type="button" aria-label="Previous song">‹</button>
-          <button class="player-btn" id="player-next" type="button" aria-label="Next song">›</button>
-          <span class="player-count" id="player-count">1 / 7</span>
-          <span class="player-dots" id="player-dots"></span>
-        </div>
-      </div>
-    </section>
+         To change one, edit its <a>: the href, the picture, and the words in
+         the <span>. To change the ORDER, move the whole <li>. The pictures
+         live in assets/img/tiles/ and are 16:9 -- crop a replacement to the
+         same shape or it will not match its neighbours.
 
-    <!-- VIDEOS
-         To add another: copy one whole <figure> and change three things --
-         data-yt (the code after watch?v= in the YouTube address), the wording
-         in the aria-label and the caption, and the picture. Save the picture
-         into assets/img/ yourself; nothing fetches it automatically. -->
-    <h2 class="section-label reveal">Watch</h2>
-    <div class="videos reveal">
-      <figure class="video">
-        <button class="video-shot" type="button"
-                data-yt="P2C5fJ5QLlY"
-                aria-label="Play the official video for Vandalism (Calm)">
-          <img src="assets/img/video-vandalism.jpg" alt="" width="1280" height="720">
-          <span class="video-play" aria-hidden="true"></span>
-        </button>
-        <figcaption>Vandalism (Calm) — official video</figcaption>
-      </figure>
-    </div>
+         The caption is what a screen reader and a search engine read, so it
+         also serves as the picture's description; that is why the <img> has
+         an empty alt rather than a repeat of the same words. -->
+    <ul class="doors reveal-load d4">
 
-    <!-- STREAMING LINKS -->
-    <h2 class="section-label reveal">Listen everywhere</h2>
-    <ul class="links reveal">
-      <li><a href="https://hyperfollow.com/18Down" target="_blank" rel="noopener">
-        <span class="dot"></span>Hyperfollow<span class="go">All platforms ↗</span></a></li>
-      <li><a href="https://www.youtube.com/@18downmusic" target="_blank" rel="noopener">
-        <span class="dot"></span>YouTube<span class="go">Watch ↗</span></a></li>
+      <li><a href="https://www.youtube.com/channel/UCmQ4pPNbM1bsnMHYaMRK-WQ" target="_blank" rel="noopener">
+        <img src="assets/img/tiles/youtube.jpg" alt="" width="900" height="506">
+        <span>18 Down on YouTube</span>
+      </a></li>
+
+      <li><a href="https://open.spotify.com/artist/7ImCZMZGstrUR4rdstuzw3" target="_blank" rel="noopener">
+        <img src="assets/img/tiles/spotify.jpg" alt="" width="900" height="506">
+        <span>18 Down on Spotify</span>
+      </a></li>
+
       <li><a href="https://music.apple.com/us/artist/18-down/1896349648" target="_blank" rel="noopener">
-        <span class="dot"></span>Apple Music<span class="go">Listen ↗</span></a></li>
-      <li><a href="https://music.amazon.com/artists/B0GZS98N6Y/18-down" target="_blank" rel="noopener">
-        <span class="dot"></span>Amazon Music<span class="go">Listen ↗</span></a></li>
+        <img src="assets/img/tiles/apple.jpg" alt="" width="900" height="506">
+        <span>18 Down on Apple Music</span>
+      </a></li>
+
+      <li><a href="pages/about.html">
+        <img src="assets/img/tiles/about.jpg" alt="" width="900" height="506">
+        <span>About</span>
+      </a></li>
+
+      <li><a href="blog/index.html">
+        <img src="assets/img/tiles/writings.jpg" alt="" width="900" height="506">
+        <span>Writings</span>
+      </a></li>
+
+      <li><a href="https://music.amazon.com/artists/B0GZS98N6Y" target="_blank" rel="noopener">
+        <img src="assets/img/tiles/amazon.jpg" alt="" width="900" height="506">
+        <span>18 Down on Amazon Music</span>
+      </a></li>
+
     </ul>
 
-    <!-- SUBSCRIBE + ARCHIVES -->
-    <div class="lower reveal">
-      <section class="card" aria-label="Subscribe">
-        <h3>Subscribe</h3>
-        <p>New writing, new music, now and then — no spam, and easy to stop.</p>
-        <p>There is no sign-up box here yet. The button opens your own email app
-          with a short message to Charl, ready to send — he adds you himself.</p>
-        <p class="subs-cta">
-          <a class="btn" href="mailto:cjordaan18@gmail.com?subject=Subscribe%20to%20Memoirs%20of%20a%20Sinner&amp;body=Please%20add%20me%20to%20the%20mailing%20list.">Email Charl to subscribe</a>
-        </p>
-      </section>
-
-      <section class="card" aria-label="Archives">
-        <h3>From the journal</h3>
-        <!-- LATEST:START -->
-        <ul class="arch-list">
-          <li><a href="blog/2026/08/14/1793/index.html">If you had a time machine and could send just on…</a> <span class="arch-when">Aug 2026</span></li>
-          <li><a href="blog/2026/08/13/1787/index.html">Which author would you love to have dinner with?…</a> <span class="arch-when">Aug 2026</span></li>
-          <li><a href="blog/2026/08/08/1781/index.html">Share a photo of your pet and tell us one thing…</a> <span class="arch-when">Aug 2026</span></li>
-          <li><a href="blog/2026/08/06/1779/index.html">What’s something you used to worry about but don…</a> <span class="arch-when">Aug 2026</span></li>
-          <li><a href="blog/2026/08/05/1778/index.html">What’s a quote that perfectly describes your out…</a> <span class="arch-when">Aug 2026</span></li>
-          <li><a href="blog/archive/index.html" class="more">…all 616 entries, back to 2014</a></li>
-        </ul>
-        <!-- LATEST:END -->
-      </section>
-    </div>
   </main>
 
-  <!-- FOOTER  (identical on every page) -->
   <!-- FOOTER:START -->
   <footer class="site">
     <p>The home of music by 18 Down. On all streaming platforms.<br>
@@ -123,21 +81,6 @@
   </footer>
   <!-- FOOTER:END -->
 
-  <script src="assets/site.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    // scroll-reveal: fade sections up as they enter view (custom-only interactivity)
-    (function () {
-      var els = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) return;      // no JS support → stays fully visible
-      document.documentElement.classList.add("has-reveal"); // only now hide, so no-JS users see all
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
-        });
-      }, { threshold: 0.12 });
-      els.forEach(function (e) { io.observe(e); });
-    })();
-  </script>
+<script src="assets/site.js"></script>
 </body>
 </html>
