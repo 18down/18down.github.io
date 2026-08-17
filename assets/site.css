@@ -568,6 +568,11 @@ footer.site .credit { font-size: 0.8rem; opacity: 0.85; }
   .reveal-load, .has-reveal .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
 }
 
+/* The footer is a Contact button and the copyright line, nothing else
+   (Charl, 2026-08-17). Spaced away from the page above it so the button does
+   not read as part of the last thing on the page. */
+.foot-cta { margin: 0 0 1.1rem; }
+
 /* Subscribe call-to-action. Replaced the old email field, which had no name
    attribute and therefore threw away whatever the visitor typed. Until the
    newsletter exists this is a plain mailto — crude, but it actually reaches him. */
