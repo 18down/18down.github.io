@@ -169,7 +169,14 @@ header.site { text-align: center; padding: 3.4rem 1rem 1.4rem; }
 /* On interior pages the wordmark is a link home, so it was picking up the
    accent colour and rendering teal there but white on the home page. The
    wordmark is identity, not navigation -- it keeps its colour either way. */
-.wordmark a { color: inherit; text-decoration: none; }
+/* The band's own mark, in place of the words. White ink on transparency, so
+   it sits on the gradient without a plate behind it. Sized to roughly the
+   presence the text heading had, and capped at 88% so a narrow phone does not
+   run it edge to edge. The height comes from the aspect ratio, which is why
+   the <img> carries its real width and height: without them the page reflows
+   when the logo arrives. */
+.logo { width: clamp(210px, 30vw, 340px); max-width: 88%; height: auto; margin-inline: auto; }
+.wordmark a { color: inherit; text-decoration: none; display: block; }
 .wordmark a:hover, .wordmark a:focus-visible { color: var(--accent-hi); text-decoration: none; }
 
 .tagline { max-width: 33rem; margin: 1rem auto 0; color: var(--muted); font-size: 0.96rem;
