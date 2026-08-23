@@ -386,6 +386,24 @@ footer.site .credit { font-size: 0.8rem; opacity: 0.85; }
             text-wrap: balance; }
 .prose a { color: var(--accent); }
 
+/* Lists and inline names in prose. Added 2026-08-23 for the privacy page, the
+   first page on the site to need either -- before it, every page was headings
+   and paragraphs, so an unstyled <ul> fell back to the browser's default
+   indent and a bullet in the body colour.
+
+   `code` deliberately does NOT switch to a monospace face. The site has ONE
+   typeface and that rule has no exceptions (see CLAUDE.md); a cookie name is
+   marked out by tint and tracking instead, which reads as "a literal name"
+   without bringing a second family onto the page. */
+.prose ul { margin: 0 0 1.25rem; padding-left: 1.35rem; }
+.prose li { margin: 0 0 0.55rem; text-wrap: pretty; }
+.prose li::marker { color: var(--accent); }
+.prose code {
+  font-family: inherit; font-size: 0.94em; letter-spacing: 0.01em;
+  color: var(--heading); background: var(--accent-10);
+  padding: 0.08em 0.36em; border-radius: 4px;
+}
+
 /* ============================================================================
    Multi-page additions (about / images / music / links) — GitHub-custom build.
    Everything below layers on top of the shared look above; interior pages reuse
